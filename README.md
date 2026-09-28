@@ -6,7 +6,7 @@
 
 <p align="center">
   A lightweight, native macOS database client for <b>PostgreSQL</b>, <b>Redis</b> and <b>SQLite</b>.<br>
-  A 4.7&nbsp;MB download. No Electron, no JVM.
+  A 4.8&nbsp;MB download. No Electron, no JVM.
 </p>
 
 <p align="center">
@@ -27,7 +27,7 @@ Download sizes of popular macOS database clients, measured on 27 September 2026 
 
 | App | Download | Databases |
 |---|---:|---|
-| **Quarry** | **4.7 MB** | PostgreSQL, Redis, SQLite |
+| **Quarry** | **4.8 MB** | PostgreSQL, Redis, SQLite |
 | Postico 2 | 11.2 MB | PostgreSQL |
 | Sequel Ace | 22.1 MB | MySQL |
 | DBeaver CE | 117 MB | many |
@@ -44,7 +44,9 @@ Download sizes of popular macOS database clients, measured on 27 September 2026 
 - **SQL console.** Syntax highlighting, autocomplete for tables, columns and aliases, errors underlined where the server reports them, one tab per result. `UPDATE`/`DELETE` without `WHERE` asks for confirmation.
 - **Table data.** 500-row pages, WHERE filter, server-side sort, inline editing submitted in one transaction.
 - **Results grid.** Smooth at 50,000 rows. Copy or export as CSV, TSV, JSON, Markdown or SQL `INSERT`.
-- **Import from DataGrip.** File ▸ Import from DataGrip brings over your data sources, including passwords saved in the macOS Keychain.
+- **SSH tunnels.** Reach PostgreSQL and Redis through SSH using your own keys, ssh-agent and `~/.ssh/config` aliases or jump hosts. Quarry runs the built-in `/usr/bin/ssh`, so it never sees your SSH credentials; the tunnel starts when you connect and stops when you disconnect.
+- **Connect once.** Passwords are remembered in Quarry's own encrypted store, so there are no repeated macOS password prompts, even after updating Quarry.
+- **Import from DataGrip.** File ▸ Import from DataGrip brings over your data sources, including passwords DataGrip saved in the macOS Keychain.
 - **Color tags** for connections, query history (⌘Y) and autosaved consoles.
 
 ![Table data](docs/data.png)
@@ -85,12 +87,12 @@ Each release lists the zip's SHA-256 in `SHA256SUMS.txt`. Check it with `shasum 
 ## Privacy
 
 - Connections, history and settings stay on your Mac in `~/Library/Application Support/Quarry/`.
-- Passwords are stored in the macOS Keychain, never on disk.
-- Quarry has no telemetry, analytics or update checks. It only connects to the databases you add.
+- Passwords are stored in `secrets.vault` in the same folder: encrypted (AES-GCM) with a key tied to your Mac, and readable only by your user account. A copy won't open on another Mac. Like `~/.pgpass`, other apps running under your account could read it.
+- Quarry has no telemetry, analytics or update checks. It only connects to the databases (and SSH hosts) you add.
 
 ## Limitations
 
-- No MySQL/MariaDB, SSH tunnels, Redis Cluster/Sentinel, or Redis TLS with self-signed certificates yet.
+- No MySQL/MariaDB, SSH password authentication (use keys or ssh-agent), Redis Cluster/Sentinel, or Redis TLS with self-signed certificates yet.
 - Not notarized yet (see Install above).
 
 ## Feedback
