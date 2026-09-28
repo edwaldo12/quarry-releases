@@ -46,10 +46,13 @@ Download sizes of popular macOS database clients, measured on 27 September 2026 
 - **Results grid.** Smooth at 50,000 rows. Copy or export as CSV, TSV, JSON, Markdown or SQL `INSERT`.
 - **SSH tunnels.** Reach PostgreSQL and Redis through SSH using your own keys, ssh-agent and `~/.ssh/config` aliases or jump hosts. Quarry runs the built-in `/usr/bin/ssh`, so it never sees your SSH credentials; the tunnel starts when you connect and stops when you disconnect.
 - **Connect once.** Passwords are remembered in Quarry's own encrypted store, so there are no repeated macOS password prompts, even after updating Quarry.
+- **ER diagram.** Right-click a schema ▸ Show ER Diagram to see its tables and foreign keys, or a table ▸ Related Tables for just its neighbours. Zoom, drag, click to highlight relations, double-click to open a table, find by name, export PNG or PDF. It loads a whole schema in three queries and lays out 500 tables in about 20 ms, and only uses memory while the tab is open.
 - **Import from DataGrip.** File ▸ Import from DataGrip brings over your data sources, including passwords DataGrip saved in the macOS Keychain.
 - **Color tags** for connections, query history (⌘Y) and autosaved consoles.
 
 ![Table data](docs/data.png)
+
+![ER diagram](docs/er.png)
 
 ![Redis browser](docs/redis.png)
 
