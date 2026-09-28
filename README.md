@@ -6,7 +6,7 @@
 
 <p align="center">
   A lightweight, native macOS database client for <b>PostgreSQL</b>, <b>Redis</b> and <b>SQLite</b>.<br>
-  A 4.8&nbsp;MB download. No Electron, no JVM.
+  A 4.8&nbsp;MB download, about 46&nbsp;MB of RAM. No Electron, no JVM.
 </p>
 
 <p align="center">
@@ -23,18 +23,22 @@ This repository hosts Quarry's official binary releases. Quarry is free to use; 
 
 Most database GUIs bundle a browser engine (Electron) or a Java runtime. Quarry is written in Swift with AppKit and SwiftUI, so it starts in a fraction of a second and stays small.
 
-Download sizes of popular macOS database clients, measured on 27 September 2026 from each app's official download URL:
+Download size and memory use of popular macOS database clients:
 
-| App | Download | Databases |
-|---|---:|---|
-| **Quarry** | **4.8 MB** | PostgreSQL, Redis, SQLite |
-| Postico 2 | 11.2 MB | PostgreSQL |
-| Sequel Ace | 22.1 MB | MySQL |
-| DBeaver CE | 117 MB | many |
-| RedisInsight | 128 MB | Redis |
-| TablePlus | 134 MB | many |
-| Beekeeper Studio | 328 MB | many |
-| DataGrip | 970 MB | many |
+| App | Download | RAM after launch | Built with | Databases |
+|---|---:|---:|---|---|
+| **Quarry** | **4.8 MB** | **46 MB** | native (Swift) | PostgreSQL, Redis, SQLite |
+| Sequel Ace | 22.1 MB | 22 MB | native | MySQL |
+| Postico 2 | 11.2 MB | 47 MB | native | PostgreSQL |
+| TablePlus | 134 MB | 49 MB | native | many |
+| DBeaver CE | 117 MB | 290–360 MB | Java | many |
+| RedisInsight | 128 MB | 449 MB | Electron | Redis |
+| Beekeeper Studio | 328 MB | 690 MB | Electron | many |
+| DataGrip | 970 MB | 1.1 GB | Java | many |
+
+Quarry uses about as much memory as other native clients like Postico and TablePlus (Sequel Ace, which only does MySQL, uses less), and 6–24× less than the Java and Electron ones, while covering three databases in one app.
+
+*How this was measured (28 September 2026, Apple silicon Mac, macOS 27):* download size from each app's official download URL. RAM is the memory footprint of all of the app's processes added together (Electron and Java apps run several), 30 seconds after launch with no connection open, two runs each. DataGrip was measured with an empty project; with a real project open and indexing it used 1.7–1.9 GB.
 
 ## Features
 
